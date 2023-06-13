@@ -17,6 +17,7 @@ export default function Home() {
         </h1>
         <p>テスト3</p>
         <p>{process.env.NEXT_PUBLIC_TEXT}</p>
+        <p>{process.env.NEXTAUTH_URL}</p>
 
         <p className={styles.description}>
           Get started by editing{' '}
