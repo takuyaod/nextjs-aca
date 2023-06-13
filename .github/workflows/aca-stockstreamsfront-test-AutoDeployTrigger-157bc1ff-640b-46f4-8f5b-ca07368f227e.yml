@@ -25,6 +25,8 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.ACASTOCKSTREAMSFRONTTEST_AZURE_CREDENTIALS }}
+        env: # Add environment variables here
+          NEXT_PUBLIC_TEXT: 環境変数テスト
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
