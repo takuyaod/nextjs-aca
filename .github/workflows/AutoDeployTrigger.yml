@@ -37,5 +37,5 @@ jobs:
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
           dockerfilePath: Dockerfile.azure
-        env: # Add environment variables here
-          NEXT_PUBLIC_TEXT: 環境変数テスト
+          env:
+            NEXT_PUBLIC_TEXT: 1
