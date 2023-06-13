@@ -16,7 +16,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <p>テスト1</p>
-        <p{process.env.NEXT_PUBLIC_TEXT}</p>
+        <p>{process.env.NEXT_PUBLIC_TEXT}</p>
 
         <p className={styles.description}>
           Get started by editing{' '}
