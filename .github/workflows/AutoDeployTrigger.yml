@@ -28,6 +28,8 @@ jobs:
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
+        env:
+          NEXT_PUBLIC_TEXT: hogehoge
         with:
           appSourcePath: ${{ github.workspace }} 
           registryUrl: crsssfrontwestjptest001.azurecr.io
