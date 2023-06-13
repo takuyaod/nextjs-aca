@@ -36,7 +36,7 @@ jobs:
           containerAppName: aca-stockstreamsfront-test
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
-          dockerfilePath: Dockerfile
+          dockerfilePath: Dockerfile.azure
 
      
 
