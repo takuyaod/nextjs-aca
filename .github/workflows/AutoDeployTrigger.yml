@@ -37,5 +37,5 @@ jobs:
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
           dockerfilePath: Dockerfile.azure
-          env:
-            NEXT_PUBLIC_TEXT: 1
+        env:
+          NEXT_PUBLIC_TEXT: ${{ github.sha }}
