@@ -12,6 +12,9 @@ on:
 
   # Allow mannually trigger 
   workflow_dispatch:
+
+env:
+  NEXT_PUBLIC_TEXT: 1
       
 jobs:
   build-and-deploy:
@@ -37,5 +40,3 @@ jobs:
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
           dockerfilePath: Dockerfile.azure
-          environmentVariables: |
-            NEXT_PUBLIC_TEXT=sample
