@@ -1,8 +1,6 @@
 FROM node:18.12.1-alpine as deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-ARG hoge
-RUN echo $hoge
 COPY ./src/package*.json ./
 RUN npm ci
 
@@ -10,7 +8,8 @@ FROM node:18.12.1-alpine as builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./src/ ./
-RUN npm run build:stg
+ARG mode
+RUN $mode
 
 FROM node:18.12.1-alpine as runner
 WORKDIR /app
