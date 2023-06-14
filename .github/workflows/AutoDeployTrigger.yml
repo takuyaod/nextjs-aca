@@ -28,8 +28,6 @@ jobs:
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
-        env:
-          NEXT_PUBLIC_TEXT: hogehoge
         with:
           appSourcePath: ${{ github.workspace }} 
           registryUrl: crsssfrontwestjptest001.azurecr.io
@@ -39,4 +37,5 @@ jobs:
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
           dockerfilePath: Dockerfile.azure
-
+          environmentVariables: |
+            NEXT_PUBLIC_TEXT=sample
