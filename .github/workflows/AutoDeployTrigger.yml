@@ -12,9 +12,6 @@ on:
 
   # Allow mannually trigger 
   workflow_dispatch:
-
-env:
-  NEXT_PUBLIC_TEXT: 1
       
 jobs:
   build-and-deploy:
@@ -28,6 +25,11 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.ACASTOCKSTREAMSFRONTTEST_AZURE_CREDENTIALS }}
+
+      - name: Set environment variables
+        run: |
+          echo "::set-env name=NEXT_PUBLIC_TEXT::VALUE_1"
+          echo "::set-env name=NEXT_PUBLIC_TEXT2::VALUE_2"
 
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v1
