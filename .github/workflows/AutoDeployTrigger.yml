@@ -12,9 +12,6 @@ on:
 
   # Allow mannually trigger 
   workflow_dispatch:
-
-env:
-  NEXT_PUBLIC_TEXT: 123
       
 jobs:
   build-and-deploy:

@@ -8,11 +8,7 @@ FROM node:18.12.1-alpine as builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./src/ ./
-ARG NEXT_PUBLIC_TEXT
-RUN touch .env.production
-RUN echo "NEXT_PUBLIC_TEXT=$NEXT_PUBLIC_TEXT" >> .env.production
-RUN cat .env.production
-RUN npm run build
+RUN npm run build:stg
 
 FROM node:18.12.1-alpine as runner
 WORKDIR /app

@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:stg": "env-cmd -f .env.staging next build",
+    "build:prod": "env-cmd -f .env.prod next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,6 +14,7 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
+    "env-cmd": "^10.1.0",
     "next": "13.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
