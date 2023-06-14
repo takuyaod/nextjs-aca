@@ -10,7 +10,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY ./src/ ./
 ARG mode
 RUN echo $mode
-RUN $mode
+RUN npm run build:stg
 
 FROM node:18.12.1-alpine as runner
 WORKDIR /app
