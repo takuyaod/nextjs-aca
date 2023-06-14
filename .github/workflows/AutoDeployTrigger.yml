@@ -36,4 +36,4 @@ jobs:
           containerAppName: aca-stockstreamsfront-test
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
-          dockerfilePath: Dockerfile.azure --build-arg mode=build:stg
+          dockerfilePath: Dockerfile.azure --build-arg mode="npm run build:stg"
