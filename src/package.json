@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "build:stg": "env-cmd -f .env.staging next build",
-    "build:prod": "env-cmd -f .env.prod next build",
     "start": "next start",
     "lint": "next lint"
   },
