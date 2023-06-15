@@ -17,6 +17,7 @@ export default function Home() {
         </h1>
         <p>テスト4.9</p>
         <p>{process.env.NEXT_PUBLIC_TEXT}</p>
+        <p>{process.env.NEXT_PUBLIC_TEXT2}</p>
 
         <p className={styles.description}>
           Get started by editing{' '}
