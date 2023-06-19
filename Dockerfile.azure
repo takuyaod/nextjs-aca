@@ -9,7 +9,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./src/ ./
 ARG BUILD_ENV=production
-COPY ./deploy/.env.staging ./env.production
+RUN echo BUILD_ENV
+RUN echo .env.${BUILD_ENV}
+COPY ./deploy/.env.staging ./.env.production
 RUN npm run build
 
 FROM node:18.12.1-alpine as runner
