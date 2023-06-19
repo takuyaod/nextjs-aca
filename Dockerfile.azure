@@ -9,6 +9,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY ./src/ ./
 ARG BUILD_ENV=production
+RUN echo ./deploy/.env.${BUILD_ENV}
 COPY ./deploy/.env.${BUILD_ENV} ./.env.production
 RUN npm run build
 
