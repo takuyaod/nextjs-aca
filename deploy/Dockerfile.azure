@@ -1,15 +1,15 @@
 FROM node:18.12.1-alpine as deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY ../src/package*.json ./
+COPY ./src/package*.json ./
 RUN npm ci
 
 FROM node:18.12.1-alpine as builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY ../src/ ./
+COPY ./src/ ./
 ARG BUILD_ENV=production
-COPY .env.${BUILD_ENV} ./.env.production
+COPY ./deploy/.env.${BUILD_ENV} ./.env.production
 RUN npm run build
 
 FROM node:18.12.1-alpine as runner
