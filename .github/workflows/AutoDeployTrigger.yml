@@ -16,7 +16,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: staging
 
     steps:
       - name: Checkout to the branch
@@ -37,4 +37,4 @@ jobs:
           containerAppName: aca-stockstreamsfront-test
           resourceGroup: StockStreams.Front.Test
           imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
-          dockerfilePath: ./deploy/Dockerfile.azure --build-arg BUILD_ENV=${{ vars.BUILD }}
+          dockerfilePath: Dockerfile.azure --build-arg BUILD_ENV=${{ vars.BUILD }}
