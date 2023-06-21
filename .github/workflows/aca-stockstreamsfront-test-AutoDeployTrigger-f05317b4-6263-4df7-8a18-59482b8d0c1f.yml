@@ -1,0 +1,42 @@
+name: Trigger auto deployment for aca-stockstreamsfront-test
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ develop ]
+    paths:
+    - '**'
+    - '.github/workflows/aca-stockstreamsfront-test-AutoDeployTrigger-f05317b4-6263-4df7-8a18-59482b8d0c1f.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.ACASTOCKSTREAMSFRONTTEST_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }} 
+          registryUrl: crsssfrontwestjptest001.azurecr.io
+          registryUsername: ${{ secrets.ACASTOCKSTREAMSFRONTTEST_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.ACASTOCKSTREAMSFRONTTEST_REGISTRY_PASSWORD }}
+          containerAppName: aca-stockstreamsfront-test
+          resourceGroup: StockStreams.Front.Test
+          imageToBuild: crsssfrontwestjptest001.azurecr.io/aca-stockstreamsfront-test:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+
